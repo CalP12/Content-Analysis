@@ -1,16 +1,3 @@
-!pip3 install tensorflow
-!pip3 install numpy
-!pip3 install scipy
-!pip3 install opencv-python
-!pip3 install pillow
-!pip3 install matplotlib
-!pip3 install h5py
-!pip3 install keras
-!pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl
-
-!pip install imageai --upgrade
-!pip install tensorflow
-
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import (
     BatchNormalization, SeparableConv2D, Conv2D, MaxPooling2D, Activation, Flatten, Dropout, Dense
@@ -132,7 +119,7 @@ model.add(Dense(1024, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(7, activation='softmax'))
 '''
-# If you want to train the same model or try other models, go for this
+# Training the model
 if mode == "train":
     model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001, decay=1e-6),metrics=['accuracy'])
     model_info = model.fit_generator(
@@ -144,7 +131,7 @@ if mode == "train":
     plot_model_history(model_info)
     model.save_weights('model.h5')
 '''
-# emotions will be displayed on your face from the webcam feed
+# loading the model
 
 model.load_weights('/content/drive/MyDrive/Project/model.h5')
 
